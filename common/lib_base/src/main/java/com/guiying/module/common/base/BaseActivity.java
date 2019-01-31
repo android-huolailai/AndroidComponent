@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.guiying.module.common.base.R;
 import com.guiying.module.common.utils.Utils;
 
 /**

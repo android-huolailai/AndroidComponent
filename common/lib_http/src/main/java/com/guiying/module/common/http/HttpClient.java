@@ -7,7 +7,6 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.guiying.module.common.http.R;
 import com.guiying.module.common.utils.NetworkUtils;
 import com.guiying.module.common.utils.StringUtils;
 import com.guiying.module.common.utils.ToastUtils;
