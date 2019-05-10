@@ -4,6 +4,7 @@ buildscript {
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
+        classpath fileTree(dir: 'plugins', include: ['*.jar'])
         /* classpath deps.android_gradle_plugin*/
         classpath deps.android_gradle_plugin
         classpath deps.kotlin.plugin

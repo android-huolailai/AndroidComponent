@@ -10,5 +10,7 @@ include ':common:lib_http',
         ':common:lib_base',
         ':common:lib_widget'
 
+//诸神黄昏
+include ':component:thor_alone_gradle_plugin'
 
         
