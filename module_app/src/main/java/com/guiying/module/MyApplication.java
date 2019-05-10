@@ -64,7 +64,6 @@ public class MyApplication extends BaseApplication {
         MultiDex.install(this);
     }
 
-
     /**
      * 发送崩溃日志
      */

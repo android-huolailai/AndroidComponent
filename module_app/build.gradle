@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'thorAlone'
 
 // Create a variable called keystorePropertiesFile, and initialize it to your
 // keystore.properties file, in the rootProject folder.
@@ -76,10 +76,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.support.multidex
     implementation project(':lib_common')
-    if (!isModule.toBoolean()) {
-        implementation project(':module_main')
-        implementation project(':module_girls')
-        implementation project(':module_news')
 
-    }
+    //组件解耦采用这种方式  assemble 才会引入依赖 build并不引入达到组件间代码隔离
+    addComponent(':module_main')
+    addComponent(':module_girls')
+    addComponent(':module_news')
 }

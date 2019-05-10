@@ -45,8 +45,8 @@ class ComBuild implements Plugin<Project> {
             runMainApp(project)
             //添加配置依赖
             compileComponents(assembleTask, project)
-            //添加扩展方法 (选项)
-            project.ext.addComponent = addComponent()
+            //添加扩展方法 (选项) 参数
+            project.ext.addComponent = { dependencyName -> addComponent(dependencyName) }
             return
         }
 
@@ -103,18 +103,6 @@ class ComBuild implements Plugin<Project> {
     private void runMainApp(Project project) {
         project.apply plugin: 'com.android.application'
         log("apply plugin is shell app" + 'com.android.application')
-
-        //main下删除所有debug目录下的文件
-        project.android.sourceSets.main {
-            //默认这个位置，为代码清晰
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-            //删除所有debug目录下内容
-            exclude 'debug/**'
-            //集成开发模式下删除所有debug下文件
-            java {
-                exclude 'debug/**'
-            }
-        }
     }
 
     /**
@@ -147,9 +135,16 @@ class ComBuild implements Plugin<Project> {
                 //默认这个位置，为代码清晰
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 //删除所有debug目录下内容
-                exclude 'debug/**'
-                //集成开发模式下删除所有debug下文件
                 java {
+                    exclude 'debug/**'
+                }
+                res {
+                    exclude 'debug/**'
+                }
+                assets {
+                    exclude 'debug/**'
+                }
+                jniLibs {
                     exclude 'debug/**'
                 }
             }
@@ -226,7 +221,17 @@ class ComBuild implements Plugin<Project> {
     //添加依赖
     private void addDependencies(Project project, String dependenciesName) {
         def dependencyMode = (project.gradle.gradleVersion as float) >= 4.1F ? 'api' : 'compile'
-        project.dependencies.add(dependencyMode, dependenciesName)
+        dependenciesName = trimAll(dependenciesName)
+        log("addDependencies: trimAll" + dependenciesName)
+        if (dependenciesName.startsWith(':')) { //project
+            log("addDependencies: project" + dependenciesName)
+            //读取根目录下的
+            project.dependencies.add(dependencyMode, project.project(dependenciesName))
+        } else { //依赖
+            log("addDependencies: dependencies" + dependenciesName)
+            project.dependencies.add(dependencyMode, dependenciesName)
+        }
+
     }
 
     //获得当前的module名字
@@ -246,6 +251,34 @@ class ComBuild implements Plugin<Project> {
      * @return
      */
     private log(String msg) {
-        if (isDebug) System.out.println(msg)
+        if (isDebug) System.out.println('thorAlone:' + msg)
+    }
+
+    //删除左右两边的不可见字符 增加配置容错性
+    private String trimAll(String str) {
+        char[] value = str.toCharArray()
+        int len = value.length
+        int st = 0
+        char[] val = value
+
+        while ((st < len) && (val[st] <= ' '
+                ||  val[st] == ','
+                ||  val[st] == '\\'
+                ||  val[st] == '\r'
+                ||  val[st] == '\n'
+                ||  val[st] == '\''
+                ||  val[st] == '\"')) {
+            st++
+        }
+        while ((st < len) && (val[len - 1] <= ' '
+                ||  val[len - 1] == ','
+                ||  val[len - 1] == '\\'
+                ||  val[len - 1] == '\r'
+                ||  val[len - 1] == '\n'
+                ||  val[len - 1] == '\''
+                ||  val[len - 1] == '\"')) {
+            len--
+        }
+        return ((st > 0) || (len < value.length)) ? str.substring(st, len) : str
     }
 }
