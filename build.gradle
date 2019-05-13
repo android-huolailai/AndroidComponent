@@ -31,10 +31,10 @@ allprojects {
         }
     }
 
-    // 组件缓存更新时间设置（默认每次build都更新）
-//    configurations.all {
-//        resolutionStrategy.cacheChangingModulesFor 120, 'minutes'
-//    }
+//     组件缓存更新时间设置（默认每次build都更新）
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 120, 'minutes'
+    }
 
 }
 
