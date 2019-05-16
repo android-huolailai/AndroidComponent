@@ -29,15 +29,15 @@ android {
         }
     }
 
-//    //删除api文件
-//    sourceSets {
-//        main {
-//            java {
-//                exclude('**/**.api')
-//            }
-//        }
-//    }
-    //将api文件拷贝到对应project文件当中
+    //删除api文件
+    sourceSets {
+        main {
+            java {
+                exclude('**/**.api')
+            }
+        }
+    }
+//    将api文件拷贝到对应project文件当中
 
 
 }
@@ -47,6 +47,7 @@ dependencies {
     annotationProcessor deps.arouter_compiler
     implementation project(':module_api')
     implementation project(':lib_common')
+//    addComponent(':module_api')
 }
 
 //public static void clear(File dir) {
@@ -61,19 +62,19 @@ dependencies {
 //        println(dir.name + "清理成功")
 //
 //}
-
+//
 //task cleanApiLib() {
 //    group 'api'
 //    delete project.rootProject.project(':module_api').projectDir.path + "/src/main/java"
 //}
-
+//
 //task clearApiEmptyDir() {
 //    group 'api'
 //    String filePath = project.rootProject.project(':module_api').projectDir.path + "/src/main/java"
 //    println("show all filePath:" + filePath)
 //    clear(new File(filePath))
 //}
-
+//
 //////显式声明
 //task copyApiForCommLib(type: Copy) {
 //
@@ -97,4 +98,3 @@ dependencies {
 //    }
 //
 //}
-

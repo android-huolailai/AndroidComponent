@@ -33,12 +33,12 @@ public class Utils {
     }
 
     //获得指定项目java目录
-    public static String getModuleJavaPath(Project project, String moudleName){
+    public static String getModuleJavaPath(Project project, String moudleName) {
         return project.rootProject.project(moudleName).projectDir.path + "/src/main/java"
     }
 
     //获得当前项目java目录
-    public static String getProjectJavaPath(Project project){
+    public static String getProjectJavaPath(Project project) {
         return project.projectDir.path + "/src/main/java"
     }
 
@@ -55,8 +55,7 @@ public class Utils {
         }
 
         if (dir.isDirectory() && dir.delete())
-            println(dir.name + "清理成功")
-
+            println('weixinApi:文件夹' + dir.path + "清理成功")
     }
 
 }

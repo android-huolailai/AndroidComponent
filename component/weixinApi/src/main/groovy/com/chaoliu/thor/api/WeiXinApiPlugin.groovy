@@ -205,7 +205,7 @@ public class WeiXinApiPlugin implements Plugin<Project> {
             //遍历所有项目 将api文件
             for (Project project : mProject.rootProject.getAllprojects()) {
                 String currentProjectPath = Utils.getProjectJavaPath(project)
-                println("copy from:" + currentProjectPath)
+                log("copy from:" + currentProjectPath)
                 from(currentProjectPath) {
                     include '**/**.api'
                 }
@@ -213,7 +213,11 @@ public class WeiXinApiPlugin implements Plugin<Project> {
 
             String apiModulePath = Utils.getModuleJavaPath(mProject, moduleName)
 
-            println("copy into:" + apiModulePath)
+            divideLog()
+
+            log("copy into:" + apiModulePath)
+
+            divideLog()
 
             into(apiModulePath)
 
@@ -244,4 +248,7 @@ public class WeiXinApiPlugin implements Plugin<Project> {
         if (isDebug) System.out.println('weixinApi:' + msg)
     }
 
+    private divideLog(){
+        log("============================================================================")
+    }
 }

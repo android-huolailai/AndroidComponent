@@ -1,33 +1,16 @@
 
-# 应用截图
-<table>
-    <tr>
-        <td><img src="/screenshots/Screenshot_1.png"></td>
-        <td><img src="/screenshots/Screenshot_2.png"></td>
-        <td><img src="/screenshots/Screenshot_3.png"></td>
-        <td><img src="/screenshots/Screenshot_4.png"></td>
-    </tr>
-</table>
+# AndroidComponent
 
-# AndroidModulePattern
+**组件化开发专题** :https://www.jianshu.com/c/22ffe717490b
+ 
+1. **第1章 组件单独调试与集成发布** :https://www.jianshu.com/p/4b368ee8d4fd
+提供插件支持 thorAlone
 
-Android项目组件化示例代码
+2. **第2章 组件化选型** :https://www.jianshu.com/p/4243b7c7f9be
+提供组件化框架Arouter+auto-register+ThorComponent框架(正在忙碌自研中)
 
-**Android组件化方案**：http://blog.csdn.net/guiying712/article/details/55213884
-
-**Android组件化之终极方案**：http://blog.csdn.net/guiying712/article/details/78057120
-
-1. 现在的 AndroidModulePattern 使用 阿里ARouter作为路由；
-
-2. Android组件化方案已经支持 **Fragment组件化**，使用方法请下载Demo查看；
-
-3. 本项目已适配Android Studio 3.0.1版本(Google仓库会带来一定影响)
-
-
-## 集成开发模式和组件开发模式转换
-
-**2、![Image](/screenshots/develper.PNG) 在运行之前，请先按照图中选择一个能够运行的组件；**
-
+3. **第3章 组件声明式编程 仿微信".api"化** :https://www.jianshu.com/p/20108abc1dd6
+提供插件支持 weixinApi 强力解决此问题
 
 ## 组件功能介绍
 
@@ -52,9 +35,16 @@ Android项目组件化示例代码
 3. 声明APP需要的uses-permission；
 4. 定义全局通用的主题（Theme）；
 
+## Thanks
+    thanks guiying712 
+    links:
+    Android项目组件化示例代码
+    **Android组件化方案**：http://blog.csdn.net/guiying712/article/details/55213884
+    **Android组件化之终极方案**：http://blog.csdn.net/guiying712/article/details/78057120
+
 ## License
 
-    Copyright 2017 guiying712, AndroidModulePattern Open Source Project
+    Copyright 2019 yinglingchaoliu, AndroidComponent Open Source Project
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
