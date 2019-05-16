@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.chaoliu.module.main.CommonUtil;
 import com.guiying.module.common.base.BaseActivity;
 import com.guiying.module.common.base.ViewManager;
 import com.guiying.module.common.utils.ToastUtils;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.news_button).setOnClickListener(this);
         findViewById(R.id.girls_button).setOnClickListener(this);
         findViewById(R.id.fragment_button).setOnClickListener(this);
+        CommonUtil.test();
     }
 
     @Override

@@ -1,4 +1,4 @@
-include ':lib_common',
+include ':lib_common', ':lib',
         ':module_app',
         ':module_main',
         ':module_girls',
@@ -11,7 +11,9 @@ include ':common:lib_http',
         ':common:lib_widget'
 
 //诸神黄昏
-include ':component:thor_alone_gradle_plugin',
-        ':component:thor'
+include ':component:thor_alone_gradle_plugin',//解耦插件
+        ':component:thor',//核心框架
+        ':component:thor_api_gradle_plugin'//去".api"插件
 
-        
+//api testmodule
+include ':module_api'

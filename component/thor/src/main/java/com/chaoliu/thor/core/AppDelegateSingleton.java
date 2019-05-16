@@ -14,7 +14,7 @@ import java.util.List;
  * App初始化代理 前期为了快速搭建采用反射，
  * 后期为性能优化一律采用apt+asm
  */
-public class AppDelegateSingleton {
+public final class AppDelegateSingleton {
 
     //package root
     private static final String ROOT_PACKAGE = "com.chaoliu.thor.app";

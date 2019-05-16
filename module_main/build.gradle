@@ -1,5 +1,5 @@
 //apply plugin: 'com.android.application'
-//apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'
 apply plugin: 'thorAlone'
 
 android {
@@ -12,7 +12,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -28,10 +28,73 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    //删除api文件
+//    sourceSets {
+//        main {
+//            java {
+//                exclude('**/**.api')
+//            }
+//        }
+//    }
+    //将api文件拷贝到对应project文件当中
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor deps.arouter_compiler
+    implementation project(':module_api')
     implementation project(':lib_common')
 }
+
+//public static void clear(File dir) {
+//    File[] dirs = dir.listFiles()
+//    for (File file : dirs) {
+//        if (file.isDirectory()) {
+//            clear(file)
+//        }
+//    }
+//
+//    if (dir.isDirectory() && dir.delete())
+//        println(dir.name + "清理成功")
+//
+//}
+
+//task cleanApiLib() {
+//    group 'api'
+//    delete project.rootProject.project(':module_api').projectDir.path + "/src/main/java"
+//}
+
+//task clearApiEmptyDir() {
+//    group 'api'
+//    String filePath = project.rootProject.project(':module_api').projectDir.path + "/src/main/java"
+//    println("show all filePath:" + filePath)
+//    clear(new File(filePath))
+//}
+
+//////显式声明
+//task copyApiForCommLib(type: Copy) {
+//
+//    group 'api'
+//    //遍历所有项目 将api文件
+//    for (Project mProject : project.rootProject.getAllprojects()) {
+//        println(mProject.projectDir.path + "/src/main/java")
+//        from(mProject.projectDir.path + "/src/main/java") {
+//            include '**/**.api'
+//        }
+//    }
+//
+//    println(project.rootProject.project(':module_api').projectDir.path + "/src/main/java")
+//    into file(project.rootProject.project(':module_api').projectDir.path + "/src/main/java")
+//
+//    //将".api"改名为".java"
+//    rename { String filename ->
+//        int index = filename.indexOf(".api")
+//        String name = filename[0..index] + "java"
+//        return name
+//    }
+//
+//}
+

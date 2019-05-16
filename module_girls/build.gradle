@@ -1,4 +1,5 @@
 apply plugin: 'thorAlone'
+//apply plugin: 'weixinApi'
 
 android {
     compileSdkVersion build_versions.target_sdk
